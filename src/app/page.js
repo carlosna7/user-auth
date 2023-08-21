@@ -36,7 +36,7 @@ export default function Home() {
       .required(""),
       confirmPassword: yup
         .string()
-        .oneOf([yup.fer("password"), null], "As senha não são iguais")
+        .oneOf([yup.ref("password"), null], "As senha não são iguais")
   })
 
   return (
@@ -79,7 +79,7 @@ export default function Home() {
 
       {/* ------------------------------------------------------------------ */}
 
-      <h1>Resgistro</h1>
+      <h1>Registro</h1>
       <Formik 
         initialValues={{}}
         onSubmit={handleClickRegister}
