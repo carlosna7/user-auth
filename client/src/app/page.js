@@ -1,17 +1,28 @@
 'use client'
 import { Formik, Form, Field, ErrorMessage } from "formik"
+import axios from "axios";
 import * as yup from 'yup';
-
 export default function Home() {
 
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
-  const handleClickLogin = (value) => { 
-    console.log(value) 
+  const handleClickLogin = (values) => { 
+    axios.post("http://localhost:3001/login", {
+      email: values.email,
+      password: values.password,
+    }).then((response) => {
+      alert(response.data.msg);
+    });
   }
 
-  const handleClickRegister = (value) => { 
-    console.log(value) 
+  const handleClickRegister = (values) => { 
+    axios.post("http://localhost:3001/register", {
+      email: values.email,
+      password: values.password,
+    }).then((response) => {
+      // alert(response.data.msg);
+      console.log(response)
+    })
   }
 
   const validationLogin = yup.object().shape({
@@ -52,12 +63,12 @@ export default function Home() {
 
           <div>
             <Field 
-              name="e-mail" 
-              placeholder="e-mail..."
+              name="email" 
+              placeholder="email..."
             />
             <ErrorMessage 
               component="span"
-              name="e-mail"
+              name="email"
             />
           </div>
 
@@ -90,12 +101,12 @@ export default function Home() {
 
           <div>
             <Field 
-              name="e-mail" 
-              placeholder="e-mail..."
+              name="email" 
+              placeholder="email..."
             />
             <ErrorMessage 
               component="span"
-              name="e-mail"
+              name="email"
             />
           </div>
 
@@ -117,10 +128,10 @@ export default function Home() {
             />
             <ErrorMessage 
               component="span"
-              name="password"
+              name="confirmPassword"
             />
           </div>
-          <button type="submit" className="bg-cyan-300 p-1">Login</button>
+          <button type="submit" className="bg-cyan-300 p-1">register</button>
 
         </Form>
 
