@@ -48,6 +48,7 @@ export default function Home() {
       confirmPassword: yup
         .string()
         .oneOf([yup.ref("password"), null], "As senha não são iguais")
+        .required(""),
   })
 
   return (
