@@ -2,10 +2,13 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import axios from "axios";
 import * as yup from 'yup';
+import { useRouter } from "next/navigation";
 
 import React from 'react'
 
 const Register = () => {
+
+  const router = useRouter
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
@@ -17,7 +20,14 @@ const Register = () => {
     }).then((response) => {
       alert(response.data.msg);
       console.log(response)
-    })
+
+      if(response.data.success) {
+        router.push("/login")
+      }
+
+    }).catch((error) => {
+      console.log("Axios error: ", error)
+    });
   }
 
   const validationRegister = yup.object().shape({
