@@ -12,6 +12,7 @@ export default function Home() {
       password: values.password,
     }).then((response) => {
       alert(response.data.msg);
+      console.log(response)
     });
   }
 
@@ -20,7 +21,7 @@ export default function Home() {
       email: values.email,
       password: values.password,
     }).then((response) => {
-      // alert(response.data.msg);
+      alert(response.data.msg);
       console.log(response)
     })
   }
