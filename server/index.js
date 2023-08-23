@@ -18,7 +18,7 @@ const db = mysql.createConnection({
 app.use(express.json())
 app.use(cors(
     {
-        origin:["https://user-auth-carlosna7.vercel.app"],
+        origin:["http://localhost:3000"],
         methods: ["POST", "GET"],
         credentials: true
     }
