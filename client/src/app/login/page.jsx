@@ -17,6 +17,8 @@ const Login = () => {
     axios.post("http://localhost:3001/login", {
       email: values.email,
       password: values.password,
+    }, {
+      withCredentials: true,
     }).then((response) => {
       alert(response.data.msg);
       console.log(response)
