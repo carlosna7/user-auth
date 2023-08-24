@@ -14,7 +14,9 @@ const Login = () => {
   // valor interno do Formik (retornado pelo Field)
 
   const handleClickLogin = (values) => { 
-    axios.post("https://user-auth-server-carlosna7.vercel.app/login", { // http://localhost:3001/login
+    // https://user-auth-server-carlosna7.vercel.app/login
+    // http://localhost:3001/login
+    axios.post("http://localhost:3001/login", { 
       email: values.email,
       password: values.password,
     }, {
