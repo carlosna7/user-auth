@@ -1,9 +1,16 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const homelogged = () => {
+const omelogged = () => {
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      router.push("/login");
+    }
+  }, []);
+
   return (
-    <div>homelogged</div>
+    <div>Welcome to the logged-in page!</div>
   )
 }
 
