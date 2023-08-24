@@ -1,4 +1,5 @@
 'use client'
+
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import axios from "axios";
 import * as yup from 'yup';
@@ -16,7 +17,7 @@ const Login = () => {
   const handleClickLogin = (values) => { 
     // https://user-auth-server-carlosna7.vercel.app/login
     // http://localhost:3001/login
-    axios.post("http://localhost:3001/login", { 
+    axios.post("https://user-auth-server-carlosna7.vercel.app/login", { 
       email: values.email,
       password: values.password,
     }, {
@@ -26,6 +27,20 @@ const Login = () => {
       console.log(response)
 
       if(response.data.success) {
+        const email =  { 
+          user: {
+            id: values.email.split("@")[0],
+            task: [{
+              title: "",
+              text: "",
+             }]
+          }
+            
+        
+        }
+
+        localStorage.setItem("user-auth-section", JSON.stringify(email))
+
         router.push("/homelogged")
       }
 
