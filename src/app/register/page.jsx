@@ -14,7 +14,7 @@ const Register = () => {
   // valor interno do Formik (retornado pelo Field)
 
   const handleClickRegister = (values) => { 
-    axios.post("http://localhost:3001/register", {
+    axios.post("https://user-auth-server-carlosna7.vercel.app/register", { // http://localhost:3001/register
       email: values.email,
       password: values.password,
     }).then((response) => {
