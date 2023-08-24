@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 
-const omelogged = () => {
+const homelogged = () => {
 
   useEffect(() => {
     if (!isAuthenticated()) {
