@@ -3,14 +3,14 @@ import React, { useEffect } from 'react'
 
 const homelogged = () => {
 
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!isAuthenticated()) {
+  //     router.push("/login");
+  //   }
+  // }, []);
 
   return (
-    <div>Welcome to the logged-in page!</div>
+    <div>Parabéns, você está logado!</div>
   )
 }
 
