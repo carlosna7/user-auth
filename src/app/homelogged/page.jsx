@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const homelogged = () => {
+const Homelogged = () => {
 
   const router = useRouter()
 
@@ -52,4 +52,4 @@ const homelogged = () => {
   )
 }
 
-export default homelogged
+export default Homelogged
