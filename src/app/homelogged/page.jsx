@@ -1,10 +1,12 @@
 'use client'
 
 import jwt from "jsonwebtoken";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const homelogged = () => {
 
+  const router = useRouter()
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -36,7 +38,7 @@ const homelogged = () => {
 
   useEffect(() => {
     if (!isAuthenticated()) {
-      // router.push("/login");
+      router.push("/login");
       console.log("não autenticado")
     } else {
       console.log("autenticado")
