@@ -1,12 +1,10 @@
 'use client'
 
 import jwt from "jsonwebtoken";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const homelogged = () => {
 
-  const router = useRouter()
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
