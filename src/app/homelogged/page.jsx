@@ -6,8 +6,6 @@ import { useEffect } from "react";
 
 const Homelogged = () => {
 
-  const secret = "secret-key"
-
   const router = useRouter()
 
   // const getCookie = (name) => {
