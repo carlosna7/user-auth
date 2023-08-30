@@ -1,12 +1,12 @@
 'use client'
 
 import jwt from "jsonwebtoken";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Homelogged = () => {
 
-  const router = useRouter()
+  // const router = useRouter()
 
   // const getCookie = (name) => {
   //   const value = `; ${document.cookie}`
@@ -43,9 +43,9 @@ const Homelogged = () => {
       const decodedToken = jwt.decode(token);
       const valor = decodedToken.email.split("@")[0];      
 
-      if(valor !== "teste" ) {
-        return true;
-      }
+      // if(valor !== "teste" ) {
+      //   return true;
+      // }
 
       return true;
     } catch (error) {
@@ -55,7 +55,7 @@ const Homelogged = () => {
 
   useEffect(() => {
       if(!isAuthenticated()) {
-        router.push("/login");
+        // router.push("/login");
         console.log("não autenticado")
       } else {
         console.log("autenticado")
