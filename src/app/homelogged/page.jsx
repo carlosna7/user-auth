@@ -7,6 +7,7 @@ import { useEffect } from "react";
 const Homelogged = () => {
 
   // const router = useRouter()
+  const [loading, setLoading] = useState(true);
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -37,18 +38,22 @@ const Homelogged = () => {
   };
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      // router.push("/login");
-      console.log("não autenticado")
-    } else {
-      console.log("autenticado")
-    }
+    isAuthenticated().then(authenticated => {
+      setLoading(false)
+
+      if(!authenticated) {
+        // router.push("/login");
+        console.log("não autenticado")
+      } else {
+        console.log("autenticado")
+      }
+    })
   }, []);
 
   return (
     <div>
-      <p>Parabéns, você está logado!</p>
-    </div>
+    {loading ? <p>Verificando autenticação...</p> : <p>Parabéns, você está logado!</p>}
+  </div>
   )
 }
 
