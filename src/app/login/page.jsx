@@ -10,6 +10,7 @@ import React from 'react'
 const Login = () => {
 
   const router = useRouter();
+  document.cookie = "token=teste"
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
@@ -18,7 +19,7 @@ const Login = () => {
 
     // https://user-auth-server-carlosna7.vercel.app/login
     // http://localhost:3001/login
-    axios.post("https://user-auth-server-carlosna7.vercel.app/login", { 
+    axios.post("http://localhost:3001/login", { 
       email: values.email,
       password: values.password,
     }, {
@@ -27,8 +28,9 @@ const Login = () => {
       alert(response.data.msg);
       console.log(response)
 
-      if(response.data.success) {
+      router.push("/homelogged")
 
+      if(response.data.success) {
         const email =  { 
           user: {
             id: values.email.split("@")[0],
@@ -38,9 +40,7 @@ const Login = () => {
              }]
           }
         }
-
-        localStorage.setItem("user-auth-section", JSON.stringify(email))
-        router.push("/homelogged")
+        localStorage.setItem("userAuth", JSON.stringify(email))
       }
 
     }).catch((error) => {

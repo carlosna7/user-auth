@@ -10,6 +10,7 @@ import React from 'react'
 const Register = () => {
 
   const router = useRouter()
+  document.cookie = "token=teste"
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
@@ -17,7 +18,7 @@ const Register = () => {
   const handleClickRegister = (values) => { 
     // https://user-auth-server-carlosna7.vercel.app/register
     // http://localhost:3001/register
-    axios.post("https://user-auth-server-carlosna7.vercel.app/register", { 
+    axios.post("http://localhost:3001/register", { 
       email: values.email,
       password: values.password,
     }).then((response) => {
