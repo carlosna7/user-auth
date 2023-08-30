@@ -8,7 +8,7 @@ import React from 'react'
 
 const Register = () => {
 
-  const router = useRouter
+  const router = useRouter()
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
