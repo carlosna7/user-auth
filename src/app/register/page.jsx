@@ -10,7 +10,6 @@ import React from 'react'
 const Register = () => {
 
   const router = useRouter()
-  document.cookie = "token=teste"
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)

@@ -4,8 +4,6 @@ import Link from "next/link"
 
 export default function Home() {
 
-  document.cookie = "token=teste"
-
   return(
     <ul>
       <li>
