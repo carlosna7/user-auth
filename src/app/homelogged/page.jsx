@@ -31,7 +31,8 @@ const Homelogged = () => {
   const isAuthenticated = () => {
     const token = getCookie("token");
 
-    console.log(`Log linha 21 valor do token ${token}`)
+    console.log("token")
+    console.log(`Log linha 21 valor do token ${{token}}`)
   
     if(!token) {
       console.log("Token invalido ou vazio")
