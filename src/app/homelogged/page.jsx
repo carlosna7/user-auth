@@ -49,6 +49,7 @@ const Homelogged = () => {
 
       return true;
     } catch (error) {
+      console.log("Erro na descriptografação")
       return false;
     }
   }
