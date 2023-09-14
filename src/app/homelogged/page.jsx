@@ -41,7 +41,9 @@ const Homelogged = () => {
     try {
       // Verify the JWT token on the client-side
       const decodedToken = jwt.decode(token);
-      const valor = decodedToken.email.split("@")[0];      
+      console.log(`valor decodedToken ${decodedToken}`)
+      const valor = decodedToken.email.split("@")[0];   
+      console.log(`valor decodedToken com split no @ ${valor}`)   
 
       // if(valor !== "teste" ) {
       //   return true;
