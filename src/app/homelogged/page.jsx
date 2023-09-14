@@ -32,7 +32,6 @@ const Homelogged = () => {
   const isAuthenticated = () => {
     const token = getCookie("token");
 
-    console.log("log cookie =" + cookie)
     console.log(token)
     console.log(typeof token)
   
