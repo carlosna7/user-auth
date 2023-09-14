@@ -19,7 +19,7 @@ const Homelogged = () => {
   const getCookie = (name) => {
     const cookie = {};
     console.log(cookie)
-    console.log(`Log linha 21 valor do cookie ${cookie}`)
+    console.log(typeof cookie)
     
     document.cookie.split(';').forEach(function(el) {
       let [k,v] = el.split('=');
@@ -32,8 +32,9 @@ const Homelogged = () => {
   const isAuthenticated = () => {
     const token = getCookie("token");
 
+    console.log("log cookie =" + cookie)
     console.log(token)
-    console.log(`Log linha 21 valor do token ${{token}}`)
+    console.log(typeof token)
   
     if(!token) {
       console.log("Token invalido ou vazio")
