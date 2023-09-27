@@ -18,7 +18,7 @@ const Login = () => {
 
     // https://user-auth-server-carlosna7.vercel.app/login
     // http://localhost:3001/login
-    axios.post("https://user-auth-server-carlosna7.vercel.app/login", { 
+    axios.post("http://localhost:3001/login", { 
       email: values.email,
       password: values.password,
     }, {
@@ -27,16 +27,13 @@ const Login = () => {
       alert(response.data.msg);
       console.log(response)
 
-      router.push("/homelogged")
-
       if(response.data.success) {
+        router.push("/homelogged")
+
         const email =  { 
           user: {
             id: values.email.split("@")[0],
-            task: [{
-              title: "",
-              text: "",
-             }]
+            task: []
           }
         }
         localStorage.setItem("userAuth", JSON.stringify(email))

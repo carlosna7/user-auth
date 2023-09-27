@@ -1,20 +1,12 @@
 'use client'
 
 import jwt from "jsonwebtoken";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Homelogged = () => {
 
-  // const router = useRouter()
-
-  // const getCookie = (name) => {
-  //   const value = `; ${document.cookie}`
-  //   const parts = value.split(`; ${name}=`)
-  //   if (parts.length === 2) {
-  //     return parts.pop().split(";").shift()
-  //   }
-  // }
+  const router = useRouter()
 
   const getCookie = (name) => {
     const cookie = {};
@@ -33,7 +25,6 @@ const Homelogged = () => {
     const token = getCookie("token");
 
     console.log(token)
-    console.log(typeof token)
   
     if(!token) {
       console.log("Token invalido ou vazio")
@@ -43,11 +34,16 @@ const Homelogged = () => {
     try {
       // Verify the JWT token on the client-side
       const decodedToken = jwt.decode(token);
-      console.log(`valor decodedToken ${decodedToken}`)
-      const valor = decodedToken.email.split("@")[0];   
-      console.log(`valor decodedToken com split no @ ${valor}`)   
+      const decodedEmail = decodedToken.email.split("@")[0];
+      console.log(decodedEmail)
 
-      // if(valor !== "teste" ) {
+      const localStorageEmail = localStorage.getItem("userAuth") 
+
+      const { user: { id: idValue } = {} } = JSON.parse(localStorage.getItem('user')) || {};
+      console.log(localStorageEmail)
+
+      
+      // if(decodedEmail !== localStorageEmail ) {
       //   return true;
       // }
 
@@ -60,7 +56,7 @@ const Homelogged = () => {
 
   useEffect(() => {
       if(!isAuthenticated()) {
-        // router.push("/login");
+        router.push("/login")
         console.log("não autenticado")
       } else {
         console.log("autenticado")
