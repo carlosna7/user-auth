@@ -10,6 +10,9 @@ import React from 'react'
 const Register = () => {
 
   const router = useRouter()
+
+  const token = getCookie("token");
+  console.log(token)
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
@@ -24,7 +27,7 @@ const Register = () => {
       alert(response.data.msg);
       console.log(response)
 
-      // router.push("/login")  ativar qndo tudo estiver pronto
+      router.push("/login")
 
     }).catch((error) => {
       console.log("Axios error: ", error)

@@ -23,7 +23,6 @@ const Homelogged = () => {
 
   const isAuthenticated = () => {
     const token = getCookie("token");
-
     console.log(token)
   
     if(!token) {
@@ -40,7 +39,7 @@ const Homelogged = () => {
       const localStorageEmail = localStorage.getItem("userAuth") 
 
       const { user: { id: idValue } = {} } = JSON.parse(localStorage.getItem('user')) || {};
-      console.log(localStorageEmail)
+      console.log(idValue)
 
       
       // if(decodedEmail !== localStorageEmail ) {

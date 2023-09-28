@@ -10,6 +10,9 @@ import React from 'react'
 const Login = () => {
 
   const router = useRouter();
+
+  const token = getCookie("token");
+  console.log(token)
   
   // capturar valor dos input/Field ao clickar no botão
   // valor interno do Formik (retornado pelo Field)
