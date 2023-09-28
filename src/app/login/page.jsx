@@ -1,11 +1,9 @@
 'use client'
 
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as yup from 'yup';
 import { useRouter } from "next/navigation";
-
-import React from 'react'
 
 const Login = () => {
 
@@ -24,23 +22,17 @@ const Login = () => {
     }, {
       withCredentials: true,
     }).then((response) => {
-      alert(response.data.msg);
-      console.log(response)
+      alert(response.data.msg)
+      // console.log(response)
 
       if(response.data.success) {
-        router.push("/homelogged")
-
-        const email =  { 
-          user: {
-            id: values.email.split("@")[0]
-          }
-        }
-        localStorage.setItem("userAuth", JSON.stringify(email))
+        const query = (values.email)
+        router.push(`/homelogged?query=${query}`)
       }
 
     }).catch((error) => {
       console.log("Axios error: ", error)
-    });
+    })
   }
 
   const validationLogin = yup.object().shape({

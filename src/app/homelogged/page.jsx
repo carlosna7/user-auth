@@ -1,17 +1,19 @@
 'use client'
 
 import jwt from "jsonwebtoken";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 const Homelogged = () => {
 
   const router = useRouter()
+  const searchParams = useSearchParams();  
+  const queryToAuth = searchParams.get('query');
+  console.log(queryToAuth)
 
   const getCookie = (name) => {
     const cookie = {};
     console.log(cookie)
-    console.log(typeof cookie)
     
     document.cookie.split(';').forEach(function(el) {
       let [k,v] = el.split('=');
@@ -22,7 +24,7 @@ const Homelogged = () => {
   }
 
   const isAuthenticated = () => {
-    const token = getCookie("token") ;
+    const token = getCookie("token");
     console.log(token)
   
     if(!token) {
@@ -32,15 +34,14 @@ const Homelogged = () => {
   
     try {
       // Verify the JWT token on the client-side
-      const decodedToken = jwt.decode(token);
-      const decodedEmail = decodedToken.email.split("@")[0];
+      const decodedToken = jwt.decode(token)
+      const decodedEmail = decodedToken.email
       console.log(decodedEmail)
       
-      // if(decodedEmail !== localStorageEmail ) {
-      //   return true;
-      // }
+      if(decodedEmail === queryToAuth ) {
+        return true;
+      }
 
-      return true;
     } catch (error) {
       console.log("Erro na descriptografação")
       return false;
