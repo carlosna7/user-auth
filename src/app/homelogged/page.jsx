@@ -22,7 +22,7 @@ const Homelogged = () => {
   }
 
   const isAuthenticated = () => {
-    const token = getCookie("token");
+    const token = getCookie("token") ;
     console.log(token)
   
     if(!token) {
