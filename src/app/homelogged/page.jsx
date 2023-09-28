@@ -35,12 +35,6 @@ const Homelogged = () => {
       const decodedToken = jwt.decode(token);
       const decodedEmail = decodedToken.email.split("@")[0];
       console.log(decodedEmail)
-
-      const localStorageEmail = localStorage.getItem("userAuth") 
-
-      const { user: { id: idValue } = {} } = JSON.parse(localStorage.getItem('user')) || {};
-      console.log(idValue)
-
       
       // if(decodedEmail !== localStorageEmail ) {
       //   return true;
@@ -54,11 +48,11 @@ const Homelogged = () => {
   }
 
   useEffect(() => {
-      if(!isAuthenticated()) {
+      if(isAuthenticated()) {
+        console.log("autenticado")
+      } else {
         router.push("/login")
         console.log("não autenticado")
-      } else {
-        console.log("autenticado")
       }
   }, []);
 

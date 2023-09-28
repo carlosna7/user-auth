@@ -32,8 +32,7 @@ const Login = () => {
 
         const email =  { 
           user: {
-            id: values.email.split("@")[0],
-            task: []
+            id: values.email.split("@")[0]
           }
         }
         localStorage.setItem("userAuth", JSON.stringify(email))
