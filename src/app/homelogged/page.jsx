@@ -2,7 +2,8 @@
 
 import jwt from "jsonwebtoken";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Homelogged = () => {
 
@@ -10,6 +11,22 @@ const Homelogged = () => {
   const searchParams = useSearchParams();  
   const queryToAuth = searchParams.get('query');
   console.log(queryToAuth)
+
+  const funssao = () => {
+
+    const token = getCookie("token");
+
+    axios.post("http://localhost:3001/homelogged", { 
+      token: token,
+    }, {
+      withCredentials: true,
+    }).then((response) => {
+      alert(response.data.msg)
+      // console.log(response)
+    }).catch((error) => {
+      console.log("Axios error: ", error)
+    })
+  }
 
   const getCookie = (name) => {
     const cookie = {};
@@ -49,12 +66,14 @@ const Homelogged = () => {
   }
 
   useEffect(() => {
-      if(isAuthenticated()) {
-        console.log("autenticado")
-      } else {
-        router.push("/login")
-        console.log("não autenticado")
-      }
+    funssao();
+
+    if(isAuthenticated()) {
+      console.log("autenticado")
+    } else {
+      router.push("/login")
+      console.log("não autenticado")
+    }
   }, []);
 
   return (
