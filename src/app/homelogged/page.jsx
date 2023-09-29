@@ -2,7 +2,7 @@
 
 import jwt from "jsonwebtoken";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 const Homelogged = () => {
@@ -18,11 +18,12 @@ const Homelogged = () => {
 
     axios.post("http://localhost:3001/homelogged", { 
       token: token,
+      email: queryToAuth,
     }, {
       withCredentials: true,
     }).then((response) => {
       alert(response.data.msg)
-      // console.log(response)
+      console.log(response)
     }).catch((error) => {
       console.log("Axios error: ", error)
     })
