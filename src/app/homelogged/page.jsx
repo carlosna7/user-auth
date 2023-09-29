@@ -17,7 +17,7 @@ const Homelogged = () => {
     const token = getCookie("token");
 
     axios.post("http://localhost:3001/homelogged", { 
-      token: token,
+      // token: token,
       email: queryToAuth,
     }, {
       withCredentials: true,
