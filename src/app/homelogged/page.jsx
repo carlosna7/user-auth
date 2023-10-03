@@ -19,8 +19,6 @@ const Homelogged = () => {
     axios.post("https://user-auth-server-carlosna7.vercel.app/homelogged", { 
       token: token,
       email: queryToAuth,
-    }, {
-      withCredentials: true,
     }).then((response) => {
       alert(response.data.msg)
       console.log(response)

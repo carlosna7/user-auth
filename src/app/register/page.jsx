@@ -40,10 +40,10 @@ const Register = () => {
       .string()
       .min(6, "A senha deve ter 6 caracteres")
       .required(""),
-      confirmPassword: yup
-        .string()
-        .oneOf([yup.ref("password"), null], "As senha não são iguais")
-        .required(""),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "As senha não são iguais")
+      .required(""),
   })
 
   return (
