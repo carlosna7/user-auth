@@ -16,7 +16,7 @@ const Homelogged = () => {
 
     const token = getCookie("token");
 
-    axios.post("https://user-auth-server-carlosna7.vercel.app/login", { 
+    axios.post("https://user-auth-server-carlosna7.vercel.app/homelogged", { 
       token: token,
       email: queryToAuth,
     }, {
