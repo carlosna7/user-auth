@@ -19,6 +19,8 @@ const Login = () => {
     axios.post("https://user-auth-server-carlosna7.vercel.app/login", { 
       email: values.email,
       password: values.password,
+    }, {
+      withCredentials: true,
     }).then((response) => {
       alert(response.data.msg)
       console.log(response)
