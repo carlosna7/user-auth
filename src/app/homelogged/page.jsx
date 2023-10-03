@@ -25,7 +25,7 @@ const Homelogged = () => {
       alert(response.data.msg)
       console.log(response)
     }).catch((error) => {
-      console.log("Axios error: ", error)
+      console.log("Axios erro: ", error)
     })
   }
 
