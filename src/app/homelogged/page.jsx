@@ -12,7 +12,7 @@ const Homelogged = () => {
   const queryToAuth = searchParams.get('query');
   console.log(queryToAuth)
 
-  const funssao = () => {
+  const getData = () => {
 
     const token = getCookie("token");
 
@@ -20,7 +20,7 @@ const Homelogged = () => {
       // token: token,
       email: queryToAuth,
     }, {
-      withCredentials: true,
+      withCredentials: false,
     }).then((response) => {
       alert(response.data.msg)
       console.log(response)
@@ -67,7 +67,7 @@ const Homelogged = () => {
   }
 
   useEffect(() => {
-    funssao();
+    getData();
 
     if(isAuthenticated()) {
       console.log("autenticado")
