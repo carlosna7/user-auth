@@ -1,13 +1,14 @@
 'use client'
 
 import jwt from "jsonwebtoken";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import axios from "axios";
 
 const Homelogged = () => {
 
-  const router = useRouter()
+  // const router = useRouter()
   const searchParams = useSearchParams();  
   const queryToAuth = searchParams.get('query');
   console.log(queryToAuth)
@@ -72,7 +73,7 @@ const Homelogged = () => {
     if(isAuthenticated()) {
       console.log("autenticado")
     } else {
-      router.push("/login")
+      // router.push("/login")
       console.log("não autenticado")
     }
   }, []);
