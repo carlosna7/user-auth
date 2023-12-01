@@ -1,85 +1,75 @@
-'use client'
-
-import jwt from "jsonwebtoken";
-import { useSearchParams } from "next/navigation";
-// import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import axios from "axios";
 
 const Homelogged = () => {
 
   // const router = useRouter()
-  const searchParams = useSearchParams();  
-  const queryToAuth = searchParams.get('query');
-  console.log(queryToAuth)
 
-  const getData = () => {
+  // const getData = () => {
 
-    const token = getCookie("token");
+  //   const token = getCookie("token");
 
-    // https://user-auth-server-carlosna7.vercel.app/homelogged
-    // http://localhost:3001/homelogged
+  //   // https://user-auth-server-carlosna7.vercel.app/homelogged
+  //   // http://localhost:3001/homelogged
 
-    axios.post("http://localhost:3001/homelogged", { 
-      token: token,
-      email: queryToAuth,
-    }, {
-      withCredentials: true,
-    }).then((response) => {
-      alert(response.data.msg)
-      console.log(response)
-    }).catch((error) => {
-      console.log("Axios erro: ", error)
-    })
-  }
+  //   axios.post("http://localhost:3001/homelogged", { 
+  //     token: token,
+  //     email: queryToAuth,
+  //   }, {
+  //     withCredentials: true,
+  //   }).then((response) => {
+  //     alert(response.data.msg)
+  //     console.log(response)
+  //   }).catch((error) => {
+  //     console.log("Axios erro: ", error)
+  //   })
+  // }
 
-  const getCookie = (name) => {
-    const cookie = {};
-    console.log(cookie)
+  // const getCookie = (name) => {
+  //   const cookie = {};
+  //   console.log(cookie)
     
-    document.cookie.split(';').forEach(function(el) {
-      let [k,v] = el.split('=');
-      cookie[k.trim()] = v;
-    })
+  //   document.cookie.split(';').forEach(function(el) {
+  //     let [k,v] = el.split('=');
+  //     cookie[k.trim()] = v;
+  //   })
   
-    return cookie[name];
-  }
+  //   return cookie[name];
+  // }
 
-  const isAuthenticated = () => {
-    const token = getCookie("token");
-    console.log(token)
+  // const isAuthenticated = () => {
+  //   const token = getCookie("token");
+  //   console.log(token)
   
-    if(!token) {
-      console.log("Token invalido ou vazio")
-      return false;
-    }
+  //   if(!token) {
+  //     console.log("Token invalido ou vazio")
+  //     return false;
+  //   }
   
-    try {
-      // Verify the JWT token on the client-side
-      const decodedToken = jwt.decode(token)
-      const decodedEmail = decodedToken.email
-      console.log(decodedEmail)
+  //   try {
+  //     // Verify the JWT token on the client-side
+  //     const decodedToken = jwt.decode(token)
+  //     const decodedEmail = decodedToken.email
+  //     console.log(decodedEmail)
       
-      if(decodedEmail === queryToAuth ) {
-        return true;
-      }
+  //     if(decodedEmail === queryToAuth ) {
+  //       return true;
+  //     }
 
-    } catch (error) {
-      console.log("Erro na descriptografação")
-      return false;
-    }
-  }
+  //   } catch (error) {
+  //     console.log("Erro na descriptografação")
+  //     return false;
+  //   }
+  // }
 
-  useEffect(() => {
-    getData();
+  // useEffect(() => {
+  //   getData();
 
-    if(isAuthenticated()) {
-      console.log("autenticado")
-    } else {
-      // router.push("/login")
-      console.log("não autenticado")
-    }
-  }, []);
+  //   if(isAuthenticated()) {
+  //     console.log("autenticado")
+  //   } else {
+  //     // router.push("/login")
+  //     console.log("não autenticado")
+  //   }
+  // }, [])
 
   return (
     <div>

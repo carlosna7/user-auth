@@ -26,8 +26,12 @@ const Login = () => {
       console.log(response)
 
       if(response.data.success) {
-        const query = (values.email)
-        router.push(`/homelogged?query=${query}`)
+
+        sessionStorage.setItem("token", "valor");
+        localStorage.setItem("token", "valor");
+
+        // const query = (values.email)
+        router.push(`/homelogged`)
       }
 
     }).catch((error) => {
