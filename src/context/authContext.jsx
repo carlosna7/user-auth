@@ -12,12 +12,8 @@ const AuthProvider = ({ children }) => {
 	
     const verifyToken = async () => {
 
-      console.log("Funcionando Eduardo")
-
       try {
         const response = await axios.get("http://localhost:3001/verifyuser")
-
-        console.log("Funcionando Eduardo")
 
         if (response.data.success) {
           setAuth(true)
