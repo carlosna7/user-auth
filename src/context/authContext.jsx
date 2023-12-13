@@ -8,38 +8,52 @@ import { useRouter } from 'next/navigation';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(false)
+  const [ auth, setAuth ] = useState(false)
+  const [ userToken, setUserToken ] = useState(null)
+
+  const router = useRouter()
 
   useEffect(() => {
-
-    // const router = useRouter()
-
     const cookies = Cookies.get('tokenLogin')
     console.log(cookies)
+
+    if(cookies) {
+      setUserToken(cookies)
+    } else {
+      setUserToken(null)
+    } 
+  }, [])
+
+  useEffect(() => {
 	
     const verifyToken = async () => {
 
-      try {
-        const response = await axios.post("http://localhost:3001/verifyuser", {
-          token: cookies
-        })
-
-        if(response.data.success === true) {
-          console.log("true verdade")
-          setAuth(true)
-        } else {
-          console.log("false falso")
-          setAuth(false)
-
-          // router.push("/login")
+      if(userToken) {
+        try {
+          const response = await axios.post("http://localhost:3001/verifyuser", {
+            token: userToken
+          })
+  
+          console.log(response.data.msg)
+  
+          if(response.data.success === true) {
+            console.log("true verdade")
+            setAuth(true)
+          } else {
+            console.log("false falso")
+            setAuth(false)
+  
+            router.push("/login")
+          }
+        } catch (error) {
+          console.log("Erro ao verificar token:", error)
         }
-      } catch (error) {
-        console.log("Erro ao verificar token:", error)
       }
+      
     }
 
     verifyToken()
-  }, [])
+  }, [userToken])
 
   return (
     <AuthContext.Provider value={{ auth }}>
