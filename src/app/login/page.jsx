@@ -27,8 +27,8 @@ const Login = () => {
 
       if(response.data.success) {
 
-        sessionStorage.setItem("token", "valor");
-        localStorage.setItem("token", "valor");
+        // sessionStorage.setItem("token", "valor");
+        // localStorage.setItem("token", "valor");
 
         // const query = (values.email)
         router.push(`/homelogged`)
