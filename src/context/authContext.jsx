@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
 
   const router = useRouter()
 
+  // Fazer tanto com cookies ou localstorage/sectionStorage
   useEffect(() => {
     const cookies = Cookies.get('tokenLogin')
     console.log(cookies)
@@ -30,7 +31,10 @@ const AuthProvider = ({ children }) => {
 
       if(userToken) {
         try {
-          const response = await axios.post("http://localhost:3001/verifyuser", {
+
+          // https://user-auth-server-carlosna7.vercel.app/verifyuser
+          // http://localhost:3001/verifyuser
+          const response = await axios.post("https://user-auth-server-carlosna7.vercel.app/verifyuser", {
             token: userToken
           })
   
